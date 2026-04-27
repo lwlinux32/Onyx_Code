@@ -1,0 +1,7 @@
+
+prompt_toolkit>=3.0.0
+litellm
+duckduckgo-search
+requests
+mcp
+anyio
