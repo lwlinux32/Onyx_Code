@@ -67,9 +67,9 @@ Available CLI Commands:
 
 ## Architecture
 
-Onyx Code utilizes a full-stack architecture with an Express.js backend providing secure file system proxies and AI model routing, and a React frontend optimized for a high-performance terminal experience. The Python component provides a standalone LiteLLM-powered engine for terminal enthusiasts.
+Onyx Code utilizes a React frontend optimized for a high-performance terminal experience. The Python component provides a standalone LiteLLM-powered engine for terminal enthusiasts.
 
-#Note! 
+# Note! 
 Onyx_Code doesnt need to e configured by the first opening because it uses Ollama qwen3-coding-next:cloud so, but if you wish to configurate it, run "onyx-code --conf"
 
 
