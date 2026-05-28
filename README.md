@@ -1,14 +1,6 @@
 # Onyx Code
 
-Onyx Code is an extensible AI coding assistant designed to offer a flexible, CLI-based alternative for AI-powered development.
-## Core Features
-
-- Interactive REPL Environment: High-speed interactive loop for AI-driven coding.
-- Multiple Model Support: Support for OpenAI, Anthropic, Gemini, Mistral, Ollama, and more.
-- File System Integration: Direct reading and writing capabilities for local files.
-- Auto-Save Protocol: Intelligent file modification and saving via standard command patterns.
-- MCP Integration Readiness: Structured to connect with Model Context Protocol servers.
-- Fallback Intelligence: Built-in tools for web searching and information gathering.
+Onyx Code is an extensible AI coding assistant designed to offer a flexible, CLI-based alternative for AI-powered development. It features a professional terminal-inspired web interface and a robust Python-based CLI tool.
 
 ## Installation
 
@@ -16,13 +8,7 @@ Onyx Code is an extensible AI coding assistant designed to offer a flexible, CLI
 This makes `onyx-code` available in any directory (Windows, macOS, Linux).
 
 1. Clone or download this repository.
-  ```bash
-   git clone https://github.com/lwlinux32/Onyx_Code
-  ```
 2. Open your terminal in the project directory.
-  ```bash
-    cd path/to/Onyx_Code
-  ```
 3. Run the following command:
    ```bash
    pip install -e .
@@ -31,11 +17,7 @@ This makes `onyx-code` available in any directory (Windows, macOS, Linux).
    ```bash
    onyx-code --config
    ```
-
-#### Globall via Terminal(Only for linux)
-  ```bash
-alias onyx-code=python /path/to/Onyx_Code/onyx_code.py
-  ```
+#### Global via alias (Linux)
 ### Local Dev Setup
 If you do not want to install it globally:
 1. Install dependencies:
@@ -53,23 +35,71 @@ The `pip install -e .` command will automatically create an `onyx-code.exe` wrap
 ## Usage
 
 Slash Commands:
-- `/help`: List all available commands.
-- `/read [path]`: Ingest a file into context.
-- `/write [path] [content]`: Manually save content to a file.
-- `/clear`: Clear terminal history.
-- `/settings`: Reopen the configuration manager.
+  `/help`             - Show this documentation
+  `/config`           - Interactively configure Onyx Settings
+  `/init`             - Initialize workspace with default files
+  `/version`          - Show Onyx Code version
+  `/stats`            - Show system statistics
+  `/list`             - List files in current or specified directory
+  `/tree`             - Show directory tree structure
+  `/search`           - Search for patterns in files
+  `/edit`             - Open file in editor (or create if not exists)
+  `/history`          - Show command history
+  `/undo`             - Undo last action
+  `/redo`             - Redo undone action
+  `/logs`             - Show recent system logs
+  `/whoami`           - Show who is running Onyx
+  `/date`             - Show current date and time
+  `/uptime`           - Show system uptime
+  `/memory`           - Show memory usage
+  `/disk`             - Show disk space usage
+  `/provider [name]`  - Switch LLM provider
+  `/model [name]`     - Switch active model
+  `/clone-website`    - Clone a website via Chrome MCP
+  `/read [path]`      - Ingest file into conversation context
+  `/write [path]`     - Save last response (or extracted code) to file
+  `/clear `           - Clear conversation history and screen
+  `/exit `            - Quit Onyx Code
 
-Available CLI Commands:
-- `/config`: Interactively update provider and model settings.
-- `/read [path]`: Load file content into the conversation.
-- `/write [path]`: Save the last AI response to a file.
-- `/clear`: Reset history and clear terminal.
+
+  
+### Python CLI
+Run the CLI directly or via your alias:
+```bash
+onyx-code --config
+```
 
 ## Architecture
 
-Onyx Code utilizes a React frontend optimized for a high-performance terminal experience. The Python component provides a standalone LiteLLM-powered engine for terminal enthusiasts.
-
-# Note! 
-Onyx_Code doesnt need to e configured by the first opening because it uses Ollama qwen3-coding-next:cloud so, but if you wish to configurate it, run "onyx-code --conf"
+Onyx Code utilizes a full-stack architecture with an Express.js backend providing secure file system proxies and AI model routing, and a React frontend optimized for a high-performance terminal experience. 
+The Python component provides a standalone LiteLLM-powered engine for terminal enthusiasts.
 
 
+If you wish to run `onyx-code` from any directory, you can use the provided setup script or create a wrapper.
+
+### Installation via setup.py
+1. Create a file named `setup.py` in the root:
+```python
+from setuptools import setup
+
+setup(
+    name='onyx-code',
+    version='1.0.0',
+    py_modules=['onyx_code'],
+    entry_points={
+        'console_scripts': [
+            'onyx-code=onyx_code:main',
+        ],
+    },
+    install_requires=[
+        'prompt_toolkit',
+        'litellm',
+        'duckduckgo_search',
+        'wikipedia',
+        'requests',
+        'mcp',
+    ],
+)
+```
+2. Run `pip install -e .`
+3. Now you can use `onyx-code --config` anywhere.
