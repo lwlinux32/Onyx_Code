@@ -78,28 +78,5 @@ The Python component provides a standalone LiteLLM-powered engine for terminal e
 If you wish to run `onyx-code` from any directory, you can use the provided setup script or create a wrapper.
 
 ### Installation via setup.py
-1. Create a file named `setup.py` in the root:
-```python
-from setuptools import setup
-
-setup(
-    name='onyx-code',
-    version='1.0.0',
-    py_modules=['onyx_code'],
-    entry_points={
-        'console_scripts': [
-            'onyx-code=onyx_code:main',
-        ],
-    },
-    install_requires=[
-        'prompt_toolkit',
-        'litellm',
-        'duckduckgo_search',
-        'wikipedia',
-        'requests',
-        'mcp',
-    ],
-)
-```
-2. Run `pip install -e .`
-3. Now you can use `onyx-code --config` anywhere.
+1. Run `pip install -e .` at the location of onyx-code.
+2. Now you can use `onyx-code --config` anywhere.
